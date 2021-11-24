@@ -181,9 +181,9 @@ def selectGroupByStationQuery(table, network='SMT'):
     return
 
 #效能測試1
-db, cursor=connect2mysql('127.0.0.1','root','recast203','test') #連線
+db, cursor=connect2mysql('localhost','root','tim900719','test') #連線
 
-caseInfo = ['10萬筆資料','8萬筆資料','6萬筆資料','4萬筆資料','2萬筆資料']
+caseInfo = ['20萬筆資料','8萬筆資料','6萬筆資料','4萬筆資料','2萬筆資料']
 databaseCollection = [{'database':'test','collection':'test1', 'Loops':2778},
                       {'database':'test','collection':'test2', 'Loops':2223},
                       {'database':'test','collection':'test3', 'Loops':1667},
@@ -191,7 +191,7 @@ databaseCollection = [{'database':'test','collection':'test1', 'Loops':2778},
                       {'database':'test','collection':'test5', 'Loops':556}
                      ]
 
-for i in range(5):
+for i in range(1):
   print('Case: ', i+1, ' ', caseInfo[i])
   insertTest(databaseCollection[i]['Loops'], data, databaseCollection[i]['collection'])
   selectAllQuery(databaseCollection[i]['collection'])
@@ -199,8 +199,9 @@ for i in range(5):
   selectDateRangeQuery(databaseCollection[i]['collection'])
   selectDateRangeCountQuery(databaseCollection[i]['collection'])
   selectGroupByStationQuery(databaseCollection[i]['collection'])
-'''
+
 selectAllQuery('test1')
+'''
 selectAllQuery('test2')
 selectAllQuery('test3')
 selectAllQuery('test4')
